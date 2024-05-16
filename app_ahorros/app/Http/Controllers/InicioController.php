@@ -26,7 +26,7 @@ class InicioController extends Controller
         ->where("tarjetas.id_usuario", "=", $usuario->id)
         ->get();
 
-        dd($gastos_ingresos);
+        // dd($gastos_ingresos);
         return view('Inicio', compact('fechaActual'));
     }
 }

@@ -20,11 +20,63 @@
                         <p class="alert alert-success" role="alert" class=""> {{ session('message') }}</p>
                     @endif
 
+                    <div class="card text-center">
+                        <div class="card-header">
+                            POSIBLES AHORROS EN BASE A GASTOS E INGRESOS PERIODICOS MENSUALMENTE
+                        </div>
+                        <div class="card-body">
+                            <div class="row justify-content-center p-4">
+
+                                <div class="col-auto">
+                                    <div class="card text-bg-success mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">INGRESOS</div>
+                                        <div class="card-body">
+                                          <h5 class="card-title" id="valor_ingresos"><span class="placeholder col-10"></span></h5>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">GASTOS</div>
+                                        <div class="card-body">
+                                          <h5 class="card-title" id="valor_gastos"><span class="placeholder col-10"></span></h5>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">POSIBLE AHORRO</div>
+                                        <div class="card-body">
+                                          <h5 class="card-title" id="valor_ahorro"><span class="placeholder col-10"></span></h5>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="card text-bg-dark  mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">SOBRANTE</div>
+                                        <div class="card-body">
+                                          <h5 class="card-title" id="valor_sobrante"><span class="placeholder col-10"></span></h5>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-body-secondary">
+
+
+
+                            Dellada tus datos en el apartado de "Movimientos de usuario".
+
+                          </div>
+                    </div>
+
+                    <br>
                     <div class="card">
                         <div class="card-header">
                             Mis metas de ahorro
                         </div>
                         <div class="card-body">
+                            <div class="table-responsive" >
                             <table class="table" id="table_metas_ahorros">
                                 <thead>
                                     <th>NOMBRE</th>
@@ -55,6 +107,7 @@
 
                             </table>
                         </div>
+                        </div>
                     </div>
 
 
@@ -76,6 +129,8 @@
             return confirmacion;
         }
     </script>
+
+@vite(['resources/js/show_ahorros'])
 
 <script>
 

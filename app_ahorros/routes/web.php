@@ -51,7 +51,10 @@ Route::middleware(['auth',])->group(function () {
             Route::get('/editar/{id}', [MetasAhorrosController::class, 'edit'])->name('metas_ahorro.editar');
             Route::post('/editar/guardar', [MetasAhorrosController::class, 'update'])->name('metas_ahorro.editar.guardar');
             Route::post('/eliminar', [MetasAhorrosController::class, 'delete'])->name('metas_ahorro.eliminar');
+            Route::get('/editar/dastos_grafica_mi_ahorro/{id}', [MetasAhorrosController::class, 'dastos_grafica_mi_ahorro'])->name('metas_ahorro.editar.dastos_grafica_mi_ahorro');
+            Route::get('/datos_tarjetas_mis_ahorros', [MetasAhorrosController::class, 'datos_tarjetas_mis_ahorros'])->name('metas_ahorro.datos_tarjetas_mis_ahorros');
         });
+
     });
 
 });

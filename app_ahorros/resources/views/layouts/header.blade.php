@@ -13,8 +13,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{{ route('tarjetas')}}"><i class="bi bi-wallet2"></i>   Tarjetas</a></li>
-                  <li><a class="dropdown-item" href="{{route('gastos_ingresos') }}"><i class="bi bi-cash"></i>    Gastos e ingresos</a></li>
-                  <li><a class="dropdown-item" href="#"><i class="bi bi-bar-chart"></i>    Movimientos de usuario</a></li>
+                  <li><a class="dropdown-item" href="{{ route('movimientos_usuario')}}"><i class="bi bi-bar-chart"></i>    Movimientos de usuario</a></li>
                   <li><a class="dropdown-item" href="{{ route('metas_ahorro') }}"><i class="bi bi-wallet"></i>  Metas de ahorro</a></li>
                 </ul>
               </li>

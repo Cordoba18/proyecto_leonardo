@@ -22,38 +22,68 @@
 
                     <div class="card text-center">
                         <div class="card-header">
-                            POSIBLES AHORROS EN BASE A GASTOS E INGRESOS PERIODICOS MENSUALMENTE
+                            POSIBLES AHORROS EN BASE A GASTOS + CUOTAS DE MANEJO E INGRESOS PERIODICOS MENSUALMENTE
                         </div>
                         <div class="card-body">
-                            <div class="row justify-content-center p-4">
 
+                            <div class="row justify-content-center p-1">
                                 <div class="col-auto">
-                                    <div class="card text-bg-success mb-3" style="max-width: 18rem;">
-                                        <div class="card-header">INGRESOS</div>
+                                    <div class="card" style="width: 100%;">
+                                        <div class="card-header"><b>INDIQUE SU TARJETA</div>
+                                        <div class="card-body">
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Filtrar</label>
+                                                <br>
+                                                <div style="display:flex;">
+                                                    <select class="form-select form-select-sm" aria-label="Small select example" id="select_tarjetas">
+                                                        <option selected value="">Todas mis tarjetas</option>
+                                                        @foreach ($tarjetas as $t )
+
+                                                        @php
+                                                          $input = preg_replace('/\s+/', '', $t->numero);
+
+// Dividir la cadena en bloques de 3 caracteres
+$formatted = chunk_split($input, 3, '-');
+
+// Quitar el último guion adicional al final de la cadena
+$formatted = rtrim($formatted, '-');
+                                                        @endphp
+                                                        <option value="{{$t->id}}">{{$formatted}} | {{$t->asociacion}}</option>
+                                                        @endforeach
+                                                      </select>
+                                            </div>
+                                        </div>
+                                      </div>
+                                </div>
+                                </div>
+                                <div class="row justify-content-center p-4">
+                                    <div class="col-sm-6  mb-5 mb-sm-0">
+                                    <div class="card text-bg-success mb-3" style="width:100%;">
+                                        <div class="card-header"><b>INGRESOS  <i class="bi bi-graph-up-arrow"></i></b><br> MES | QUINCENAL</div>
                                         <div class="card-body">
                                           <h5 class="card-title" id="valor_ingresos"><span class="placeholder col-10"></span></h5>
                                         </div>
                                       </div>
                                 </div>
-                                <div class="col-auto">
-                                    <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
-                                        <div class="card-header">GASTOS</div>
+                                <div class="col-sm-6 mb-5 mb-sm-0">
+                                    <div class="card text-bg-danger mb-3" style="width:100%;">
+                                        <div class="card-header"><b>GASTOS  <i class="bi bi-graph-down-arrow"></i></b> <br> MES | QUINCENAL</div>
                                         <div class="card-body">
                                           <h5 class="card-title" id="valor_gastos"><span class="placeholder col-10"></span></h5>
                                         </div>
                                       </div>
                                 </div>
-                                <div class="col-auto">
-                                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                                        <div class="card-header">POSIBLE AHORRO</div>
+                                <div class="col-sm-6  mb-5 mb-sm-0">
+                                    <div class="card text-bg-light mb-3" style="width:100%;">
+                                        <div class="card-header"><b>POSIBLE AHORRO <i class="bi bi-wallet2"></i></b><br> MES | QUINCENAL </div>
                                         <div class="card-body">
                                           <h5 class="card-title" id="valor_ahorro"><span class="placeholder col-10"></span></h5>
                                         </div>
                                       </div>
                                 </div>
-                                <div class="col-auto">
-                                    <div class="card text-bg-dark  mb-3" style="max-width: 18rem;">
-                                        <div class="card-header">SOBRANTE</div>
+                                <div class="col-sm-6  mb-5 mb-sm-0">
+                                    <div class="card text-bg-dark  mb-3" style="width:100%;">
+                                        <div class="card-header"><b>SOBRANTE  <i class="bi bi-cash"></i></b><br>MES | QUINCENAL</div>
                                         <div class="card-body">
                                           <h5 class="card-title" id="valor_sobrante"><span class="placeholder col-10"></span></h5>
                                         </div>
@@ -62,11 +92,7 @@
                             </div>
                         </div>
                         <div class="card-footer text-body-secondary">
-
-
-
-                            Dellada tus datos en el apartado de "Movimientos de usuario".
-
+                            Dellada tus datos en el apartado de "Movimientos de usuario". Segun el <a href="https://www.canalinstitucional.tv/cuanto-sueldo-ahorrar-consejos-financieros-2022">CANAL INSTITUCIONAL TV</a> una persona debe de ahorrar el 20% de sus ingresos mensuales.
                           </div>
                     </div>
 

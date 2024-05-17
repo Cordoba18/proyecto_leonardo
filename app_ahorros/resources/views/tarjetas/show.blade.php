@@ -20,12 +20,23 @@
                         <p class="alert alert-success" role="alert" class=""> {{ session('message') }}</p>
                     @endif
 
-                    <div class="card-group" style="width: 100%">
+                    <div class="row justify-content-center p-1">
                         @foreach ($tarjetas as $t)
-                            <div class="card border-success mb-3 m-2" style="max-width: 20rem;">
+                        <div class="col-auto">
+                            <div class="card border-success" style="width: 18rem;">
                                 <div class="card-header bg-transparent border-success">{{ $t->tipo }}</div>
                                 <div class="card-body text-success">
-                                    <h5 class="card-title">{{ $t->numero }}</h5>
+
+                                    @php
+                                 $input = preg_replace('/\s+/', '', $t->numero);
+
+// Dividir la cadena en bloques de 3 caracteres
+$formatted = chunk_split($input, 3, '-');
+
+// Quitar el último guion adicional al final de la cadena
+$formatted = rtrim($formatted, '-');
+                               @endphp
+                                    <h5 class="card-title">{{ $formatted }}</h5>
                                     <b class="card-text">{{ $t->nombre_banco }}</b>
 
                                     <hr>
@@ -67,6 +78,7 @@
                                 </div>
                                 <div class="card-footer bg-transparent border-success">{{ $t->asociacion }}</div>
                             </div>
+                        </div>
                         @endforeach
 
 

@@ -10,7 +10,7 @@ use App\Http\Controllers\MetasAhorrosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(){
-    return redirect()->route('login');
+    return redirect()->route('inicio');
 })->name('');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -37,10 +37,12 @@ Route::middleware(['auth',])->group(function () {
         Route::group(['prefix' => 'gastos_ingresos'], function () {
             Route::get('', [GastosIngresosController::class, 'index'])->name('gastos_ingresos');
             Route::post('/guardar', [GastosIngresosController::class, 'save'])->name('gastos_ingresos.guardar');
+            Route::post('/eliminar', [GastosIngresosController::class, 'delete'])->name('gastos_ingresos.eliminar');
         });
 
         Route::group(['prefix' => 'movimientos_usuario'], function () {
             Route::get('', [MovimientosUsuarioController::class, 'index'])->name('movimientos_usuario');
+
 
         });
 

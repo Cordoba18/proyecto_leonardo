@@ -58,7 +58,18 @@ class GastosIngresosController extends Controller
 
         $new_gastos_ingresos->save();
 
-        return redirect()->route('gastos_ingresos')->with('message', 'Se agrego con exito consulta tus movimientos en los "Movimientos de usuario" ');
+        return redirect()->route('movimientos_usuario')->with('message', 'Se agrego con exito!');
+
+    }
+
+
+    public function delete(Request $request){
+
+        $new_gastos_ingresos = Gasto_y_ingreso::find($request->id_gasto_ingreso);
+        $new_gastos_ingresos->id_estado = 2;
+        $new_gastos_ingresos->save();
+
+        return redirect()->route('movimientos_usuario')->with('message', 'Se elimino con exito!');
 
     }
 }

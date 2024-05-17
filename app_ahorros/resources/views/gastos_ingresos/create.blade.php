@@ -82,7 +82,7 @@
                                 <button class="btn btn-success">GUARDAR</button>
                             </div>
                             <div class="col-auto">
-                                <a class="btn btn-light" href="{{ route('inicio') }}">VOLVER <i
+                                <a class="btn btn-light" href="{{ route('movimientos_usuario') }}">VOLVER <i
                                         class="bi bi-arrow-return-left"></i></a>
                             </div>
                         </div>

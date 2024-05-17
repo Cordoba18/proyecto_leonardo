@@ -9,7 +9,7 @@
           <li class="nav-item">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-house"></i> INICIO
+                    <i class="bi bi-house"></i> MODULOS
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{{ route('tarjetas')}}"><i class="bi bi-wallet2"></i>   Tarjetas</a></li>

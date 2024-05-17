@@ -24,6 +24,7 @@ Route::middleware(['auth',])->group(function () {
 
     Route::group(['prefix' => 'inicio'], function () {
         Route::get('', [InicioController::class, 'index'])->name('inicio');
+        Route::get('/dates_graficas', [InicioController::class, 'dates_graficas'])->name('inicio.dates_graficas');
 
         Route::group(['prefix' => 'tarjetas'], function () {
             Route::get('', [TarjetasController::class, 'index'])->name('tarjetas');

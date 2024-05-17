@@ -29,12 +29,16 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table_hover" id="tabla_ingresos_gastos">
+                                <table class="table table-hover" id="tabla_ingresos_gastos">
                                     <thead>
-
+                                        <th>DETALLE DE MOVIMIENTO</th>
+                                        <th>VALOR</th>
+                                        <th>FECHA</th>
+                                        <th>TARJETA</th>
+                                        <th>TIPO DE DINERO</th>
                                     </thead>
 
-                                    <tbody>
+                                    <tbody id="filas_semanales">
 
                                     </tbody>
                                 </table>
@@ -97,138 +101,30 @@
 
 
 @section('js')
+@vite(['resources/js/inicio.js'])
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-    <SCript>
-        Highcharts.chart('container2', {
-            chart: {
-                type: 'pie'
-            },
-            title: {
-                text: 'PORCENTAJE GASTOS Y INGRESOS DE LA SEMANA'
-            },
-            tooltip: {
-                valueSuffix: '%'
-            },
-            subtitle: {
-                text: 'Source:<a href="https://www.mdpi.com/2072-6643/11/3/684/htm" target="_default">MDPI</a>'
-            },
-            plotOptions: {
-                series: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: [{
-                        enabled: true,
-                        distance: 20
-                    }, {
-                        enabled: true,
-                        distance: -40,
-                        format: '{point.percentage:.1f}%',
-                        style: {
-                            fontSize: '1.2em',
-                            textOutline: 'none',
-                            opacity: 0.7
-                        },
-                        filter: {
-                            operator: '>',
-                            property: 'percentage',
-                            value: 10
-                        }
-                    }]
-                }
-            },
-            series: [{
-                name: 'Porcentaje',
-                colorByPoint: true,
-                data: [{
-                        name: 'Water',
-                        y: 55.02
-                    },
-                    {
-                        name: 'Fat',
-                        sliced: true,
-                        selected: true,
-                        y: 26.71
-                    },
-                    {
-                        name: 'Carbohydrates',
-                        y: 1.09
-                    },
-                    {
-                        name: 'Protein',
-                        y: 15.5
-                    },
-                    {
-                        name: 'Ash',
-                        y: 1.68
-                    }
-                ]
-            }]
-        });
-    </SCript>
     <script>
-        Highcharts.chart('container', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'FECHA {{ $fechaActual }}',
-                align: 'left'
-            },
-            subtitle: {
-                text: 'Source: <a target="_blank" ' +
-                    'href="https://www.indexmundi.com/agriculture/?commodity=corn">indexmundi</a>',
-                align: 'left'
-            },
-            xAxis: {
-                categories: ['USA', 'China', 'Brazil', 'EU', 'India', 'Russia'],
-                crosshair: true,
-                accessibility: {
-                    description: 'Countries'
-                }
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: '1000 metric tons (MT)'
-                }
-            },
-            tooltip: {
-                valueSuffix: ' (1000 MT)'
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                    name: 'Corn',
-                    data: [406292, 260000, 107000, 68300, 27500, 14500]
-                },
-                {
-                    name: 'Wheat',
-                    data: [51086, 136000, 5500, 141000, 107180, 77000]
-                }
-            ]
-        });
-    </script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
+
+function activar_tabla() {
+
             $('#tabla_ingresos_gastos').DataTable({
                 "paging": true,
-                "lengthChange": false,
+                "lengthChange": true,
                 "searching": true,
-                "ordering": false,
+                "ordering": true,
                 "info": true,
                 "autoWidth": false,
                 responsive: true,
-                "pageLength": 5
+                "pageLength": 5,
             });
-        });
+
+}
+
+
     </script>
 @endsection

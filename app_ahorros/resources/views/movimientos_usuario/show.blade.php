@@ -26,7 +26,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive table-striped" >
-                            <table class="table table-hover" id="table_metas_ahorros">
+                            <table class="table table-hover display" id="table_metas_ahorros">
                                 <thead>
                                     <th>ID</th>
                                     <th>DETALLE</th>
@@ -46,7 +46,7 @@
                                              @endif" >
                                              <td>{{$g->id }}</td>
                                             <td>{{$g->detalle }}</td>
-                                            <td>${{number_format($g->valor) }}</td>
+                                            <td>{{($g->valor) }}</td>
                                             <td>{{$g->fecha }}</td>
                                             @php
                                            $input = preg_replace('/\s+/', '', $g->numero);
@@ -104,22 +104,40 @@ $formatted = rtrim($formatted, '-');
 
 
 <script>
-
-
-
-
     document.addEventListener('DOMContentLoaded', function () {
-$('#table_metas_ahorros').DataTable({
-"paging": true,
-"lengthChange": true,
-"searching": true,
-"ordering": true,
-"info": true,
-"autoWidth": false,
-responsive: true,
-"pageLength": 5,
-"order": [[0, 'desc']]
-});
-});
+        $('#table_metas_ahorros').DataTable({
+            "footerCallback": function ( row, data, start, end, display ) {
+                var api = this.api();
+
+                // Calcula el total para la columna (índice 2 en este caso)
+                var total = api
+                    .column(2, { page: 'current' })
+                    .data()
+                    .reduce(function (a, b) {
+                        console.log('Sumando: ', a, b);
+                        return parseFloat(a) + parseFloat(b);
+                    }, 0);
+
+                console.log('Total calculado: ', total);
+
+                // Actualiza el pie de página
+                $(api.column(2).footer()).html(total.toLocaleString('es-CO', {
+                    style: 'currency',
+                    currency: 'COP'
+                }));
+            },
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            responsive: true,
+            "pageLength": 5,
+            "order": [[0, 'desc']],
+        });
+    });
 </script>
+
+
 @endsection

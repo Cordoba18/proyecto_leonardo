@@ -43,14 +43,18 @@ function cargar_tarjtas(request) {
            let valor_gastos  = 0;
            gastos_ingresos.forEach(g => {
 
+            console.log(g)
            let valor = g.valor;
+if (g.id_tipo_periodo == 2) {
+
+
             if (g.id_tipo_dinero == 2) {
 
                  valor_gastos = valor_gastos + valor;
             }else{
                 valor_ingresos = valor_ingresos + valor;
             }
-
+        }
            });
 
            tarjetas.forEach(t => {
@@ -63,7 +67,7 @@ function cargar_tarjtas(request) {
 
 
       let valor_de_ahorro = 0;
-     valor_de_ahorro = (valor_ingresos-valor_gastos) *0.20;
+     valor_de_ahorro = valor_ingresos *0.20;
 
     if (valor_de_ahorro < 0) {
 

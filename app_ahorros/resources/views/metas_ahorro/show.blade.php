@@ -156,7 +156,7 @@ $formatted = rtrim($formatted, '-');
         }
     </script>
 
-@vite(['resources/js/show_ahorros'])
+@vite(['resources/js/show_ahorros.js'])
 
 <script>
 

@@ -119,7 +119,7 @@ class MetasAhorrosController extends Controller
         }else{
 
             $gastos_ingresos = Gasto_y_ingreso::join("tarjetas", "gastos_y_ingresos.id_tarjeta", "tarjetas.id")
-    ->select("gastos_y_ingresos.valor", "gastos_y_ingresos.id_tipo_dinero")
+    ->select("gastos_y_ingresos.valor", "gastos_y_ingresos.id_tipo_dinero","gastos_y_ingresos.id_tipo_periodo")
     ->where("tarjetas.id_usuario", "=", $usuario->id)
     ->where(function($query) use ($formatoUltimoDiaDelMes, $formatoPrimerDiaDelMes) {
         $query->whereBetween("gastos_y_ingresos.fecha", [$formatoPrimerDiaDelMes, $formatoUltimoDiaDelMes])

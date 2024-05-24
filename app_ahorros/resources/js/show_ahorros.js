@@ -54,6 +54,10 @@ if (g.id_tipo_periodo == 2) {
             }else{
                 valor_ingresos = valor_ingresos + valor;
             }
+        }else{
+            if (g.id_tipo_dinero == 1) {
+                valor_ingresos = valor_ingresos + valor;
+            }
         }
            });
 

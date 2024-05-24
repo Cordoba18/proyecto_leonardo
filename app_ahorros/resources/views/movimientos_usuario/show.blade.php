@@ -106,26 +106,6 @@ $formatted = rtrim($formatted, '-');
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         $('#table_metas_ahorros').DataTable({
-            "footerCallback": function ( row, data, start, end, display ) {
-                var api = this.api();
-
-                // Calcula el total para la columna (índice 2 en este caso)
-                var total = api
-                    .column(2, { page: 'current' })
-                    .data()
-                    .reduce(function (a, b) {
-                        console.log('Sumando: ', a, b);
-                        return parseFloat(a) + parseFloat(b);
-                    }, 0);
-
-                console.log('Total calculado: ', total);
-
-                // Actualiza el pie de página
-                $(api.column(2).footer()).html(total.toLocaleString('es-CO', {
-                    style: 'currency',
-                    currency: 'COP'
-                }));
-            },
             "paging": true,
             "lengthChange": true,
             "searching": true,
